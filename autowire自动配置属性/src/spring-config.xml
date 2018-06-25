@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="main.Address" p:city="Shanghai"/>
+
+    <bean id="book" class="main.Book" p:name="Java" p:price="55.00"/>
+
+    <!-- 当有两个同一类型的Bean，byType就会抛出异常 -->
+    <!--<bean id="book2" class="main.Book" p:name="Java" p:price="55.00"/>-->
+
+    <!--
+    自动装配Bean
+    autowire
+    1.byName：根据bean的id属性值与java类中的属性值的setter一致则自动配置，否则置空。
+    2.byType：根据数据类型来自动配置，同一类型必须只有一个。如果配置一个以上同一个类型的Bean则会抛出异常；
+    3.constructor：构造函数【不推荐】
+    -->
+    <bean id="student1" class="main.Student" p:name="Tom" p:age="30" p:height="180" autowire="byName"/>
+    <bean id="student2" class="main.Student" p:name="Tom" p:age="30" p:height="180" autowire="byType"/>
+
+</beans>
