@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="main.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="22"/>
+        <property name="height" value="180"/>
+        <property name="book">
+            <bean class="main.Book">
+                <property name="name" value="Java"/>
+                <property name="price" value="10.00"/>
+            </bean>
+        </property>
+        <!-- Bean级联赋值；级联赋值之前Bean对象一定要先存在，否则会抛出异常，Spring IOC 不会帮你new出来。 -->
+        <property name="book.name" value="Python"/>
+        <property name="book.price" value="199.00"/>
+    </bean>
+
+</beans>
