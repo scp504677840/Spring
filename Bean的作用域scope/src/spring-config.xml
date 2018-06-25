@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Bean的作用域
+    1.默认作用域为singleton
+    2.singleton：单例。整个应用只会创建一个Bean实例。
+    3.prototype：原型。每次都会创建一个Bean实例。
+    4.request：request生命周期内创建一个Bean实例。
+    5.session：session生命周期内创建一个Bean实例。
+    -->
+
+    <bean id="singleton" class="main.Book" p:name="Singleton" p:price="11.00" scope="singleton"/>
+    <bean id="prototype" class="main.Book" p:name="Prototype" p:price="22.00" scope="prototype"/>
+
+    <!-- 下面两种情况后续讨论 -->
+    <!--<bean id="request" class="main.Book" p:name="Request" p:price="33.00" scope="request"/>-->
+    <!--<bean id="session" class="main.Book" p:name="Session" p:price="44.00" scope="session"/>-->
+
+</beans>
