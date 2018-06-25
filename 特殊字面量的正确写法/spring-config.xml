@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="studentx" class="main.Student">
+        <!-- 当字面量包含特殊字符时，下面第一种写法是错误的，第二种写法是对的 -->
+        <!--<constructor-arg name="name">
+            <value><我被包裹在特殊字符里面，错误写法^></value>
+        </constructor-arg>-->
+        <!-- 特殊字面量的正确写法 -->
+        <constructor-arg name="name">
+            <value><![CDATA[<我被包裹在特殊字符里面，正确写法>]]></value>
+        </constructor-arg>
+
+        <!-- value值的第二种写法：嵌套value标签 -->
+        <constructor-arg name="age" type="int">
+            <value>33</value>
+        </constructor-arg>
+    </bean>
+
+</beans>
