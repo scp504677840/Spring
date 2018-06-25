@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Spring Expression Language：SpEL
+    常用方法如下：
+    1.普通字面量
+    2.静态属性或方法
+    3.引用其他Bean
+    4.使用其他Bean的属性
+    -->
+    <bean id="address" class="main.Address" p:city="#{'Shanghai'}" p:street="#{'NanJingDongLu'}"/>
+
+    <bean id="book" class="main.Book" p:name="#{'Java'}" p:price="#{T(Math).random()}"/>
+
+    <bean id="student" class="main.Student" p:name="#{'Tom'}" p:age="#{2}" p:height="#{180}" p:city="#{address.city}"
+          p:book="#{book}"/>
+
+</beans>
