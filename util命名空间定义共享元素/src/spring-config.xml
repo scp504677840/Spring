@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="java" class="main.Book">
+        <property name="name" value="Java"/>
+        <property name="price" value="15.55"/>
+    </bean>
+
+    <bean id="go" class="main.Book">
+        <property name="name" value="Go"/>
+        <property name="price" value="20.00"/>
+    </bean>
+
+    <!-- 使用util命名空间设置共享集合 -->
+    <util:list id="books">
+        <ref bean="java"/>
+        <ref bean="go"/>
+        <bean class="main.Book">
+            <property name="name" value="Python"/>
+            <property name="price" value="99.99"/>
+        </bean>
+    </util:list>
+
+    <bean id="student" class="main.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="55"/>
+        <property name="height" value="185"/>
+        <!-- 使用共享集合 -->
+        <property name="books" ref="books"/>
+    </bean>
+
+</beans>
