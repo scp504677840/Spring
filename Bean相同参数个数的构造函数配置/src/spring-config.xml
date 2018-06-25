@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 演示当一个Bean有两个相同个数参数的构造函数时，通过type来区分到底调用哪一个构造函数 -->
+    <bean name="studentOne" class="main.Student">
+        <constructor-arg name="name" index="0" type="java.lang.String" value="调用第二个参数为int类型的构造函数"/>
+        <constructor-arg name="age" index="1" type="int" value="10"/>
+    </bean>
+    <bean name="studentTwo" class="main.Student">
+        <constructor-arg name="name" index="0" type="java.lang.String" value="调用第二个参数为double类型的构造函数"/>
+        <constructor-arg name="height" index="1" type="double" value="1.55"/>
+    </bean>
+
+    <bean id="hi" class="main.Hi">
+        <!-- 属性注入 -->
+        <!-- setter方法注入 -->
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <!-- 通过构造方法来配置Bean的属性 -->
+    <bean id="student" class="main.Student">
+
+        <!-- 第一种配置构造函数里的参数顺序 -->
+        <!--<constructor-arg value="one Spring Student"/>-->
+        <!--<constructor-arg value="11"/>-->
+
+        <!-- 第二种通过name配置构造函数里的参数 -->
+        <!--<constructor-arg name="name" value="two Spring Student"/>-->
+        <!--<constructor-arg name="age" value="22"/>-->
+
+        <!-- 第三种通过index配置构造函数里的参数 -->
+        <!--<constructor-arg index="0" value="three Spring Student"/>-->
+        <!--<constructor-arg index="1" value="33"/>-->
+
+        <!-- 综合配置构造函数里的参数 -->
+        <constructor-arg name="name" value="all Spring Student" type="java.lang.String" index="0"/>
+        <constructor-arg name="age" value="44" type="int" index="1"/>
+
+    </bean>
+
+</beans>
