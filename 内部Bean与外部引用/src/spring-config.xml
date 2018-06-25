@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="book" class="main.Book">
+        <property name="name" value="Java"/>
+        <property name="price" value="15.55"/>
+    </bean>
+
+    <bean name="outStudent" class="main.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="12"/>
+        <property name="height" value="180"/>
+        <!-- 外部引用Bean -->
+        <property name="book" ref="book"/>
+    </bean>
+
+    <bean name="inStudent" class="main.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="12"/>
+        <property name="height" value="180"/>
+        <property name="book">
+            <!-- 内部Bean，内部Bean不用设置id，也不用设置name；内部Bean不能被外部属性引用。 -->
+            <bean class="main.Book">
+                <property name="name" value="Go"/>
+                <property name="price" value="99.00"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
