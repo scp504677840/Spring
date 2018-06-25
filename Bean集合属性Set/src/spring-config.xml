@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="java" class="main.Book">
+        <property name="name" value="Java"/>
+        <property name="price" value="12.00"/>
+    </bean>
+
+    <bean id="go" class="main.Book">
+        <property name="name" value="Go"/>
+        <property name="price" value="25.00"/>
+    </bean>
+
+    <bean id="student" class="main.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="22"/>
+        <property name="height" value="180"/>
+        <property name="books">
+            <!-- 给Set集合赋值 -->
+            <set value-type="main.Book">
+                <ref bean="java"/>
+                <ref bean="go"/>
+                <bean class="main.Book">
+                    <property name="name" value="Python"/>
+                    <property name="price" value="66.55"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+</beans>
