@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hi" class="main.Hi">
+        <!-- 属性注入 -->
+        <!-- setter方法注入 -->
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <!-- 通过构造方法来配置Bean的属性 -->
+    <bean id="student" class="main.Student">
+        <!-- 第一种配置构造函数里的参数顺序 -->
+        <!--<constructor-arg value="one Spring Student"/>-->
+        <!--<constructor-arg value="11"/>-->
+
+        <!-- 第二种通过name配置构造函数里的参数 -->
+        <!--<constructor-arg name="name" value="two Spring Student"/>-->
+        <!--<constructor-arg name="age" value="22"/>-->
+
+        <!-- 第三种通过index配置构造函数里的参数 -->
+        <!--<constructor-arg index="0" value="three Spring Student"/>-->
+        <!--<constructor-arg index="1" value="33"/>-->
+
+        <!-- 综合配置构造函数里的参数 -->
+        <constructor-arg name="name" value="all Spring Student" type="java.lang.String" index="0"/>
+        <constructor-arg name="age" value="44" type="int" index="1"/>
+    </bean>
+
+</beans>
