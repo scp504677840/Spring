@@ -9,6 +9,7 @@
     @Controller
     @Service
     @Repository
+    @Component
 
     说明：
     当遇到 "通配符的匹配很全面, 但无法找到元素 'context:component-scan' 的声明。" 问题时，解决办法如下：
