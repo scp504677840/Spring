@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+    通过注解配置Bean
+    @Controller
+    @Service
+    @Repository
+
+    说明：
+    当遇到 "通配符的匹配很全面, 但无法找到元素 'context:component-scan' 的声明。" 问题时，解决办法如下：
+    1.打开 http://www.springframework.org/schema/context 网站。（这个地址取自xmlns:context="http://www.springframework.org/schema/context"）
+    2.找到名叫 spring-context.xsd 超链接
+    3.点进去，赋值地址栏Url，如：http://www.springframework.org/schema/context/spring-context.xsd
+    4.回到 spring-config.xml
+    5.在 xsi:schemaLocation 值后面跟上 "http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+    6.完成！
+    -->
+    <context:component-scan base-package="main"/>
+</beans>
