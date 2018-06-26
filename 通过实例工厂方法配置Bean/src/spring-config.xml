@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    实例工厂方法
+    1.首先配置实例工厂Bean
+    2.factory-bean：引用已配置的实例工厂Bean
+    3.factory-method：实例工厂获取对应Bean的方法
+    4.constructor-arg：当factory-method需要参数的时候使用此配置。
+    -->
+    <bean id="bookFactory" class="main.InstanceBookBeanFactory"/>
+
+    <bean id="java" factory-bean="bookFactory" factory-method="getBook">
+        <constructor-arg name="name" value="java"/>
+    </bean>
+    <bean id="go" factory-bean="bookFactory" factory-method="getBook">
+        <constructor-arg name="name" value="go"/>
+    </bean>
+    <bean id="python" factory-bean="bookFactory" factory-method="getBook">
+        <constructor-arg name="name" value="python"/>
+    </bean>
+
+    <!--
+    通过静态工厂方法来配置Bean
+    class：配置工厂全类名
+    factory-method：工厂产生Bean的方法
+    constructor-arg：如果factory-method方法需要传参，则通过constructor-arg传入。
+    -->
+    <!--<bean id="java" class="main.StaticBookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="java"/>
+    </bean>
+    <bean id="go" class="main.StaticBookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="go"/>
+    </bean>
+    <bean id="python" class="main.StaticBookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="python"/>
+    </bean>-->
+
+</beans>
