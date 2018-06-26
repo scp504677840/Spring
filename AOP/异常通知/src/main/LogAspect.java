@@ -16,6 +16,15 @@ import java.util.List;
 @Component
 public class LogAspect {
 
+    /*try {
+        //前置通知
+        int result = 1 + 2;
+        //返回通知
+    } catch (NullPointerException e) {
+        //异常通知
+    }
+    //后置通知*/
+
     //第一处省略：修饰符 + 【返回值类型】；其中返回值类型可以单独省略，但修饰符不行。例如：public *，但不可以：* double
     //第二处省略：类名称；
     //第三处省略：方法名称；
@@ -67,6 +76,10 @@ public class LogAspect {
 
     /**
      * 异常通知
+     * 注意：
+     * throwing参数可以指定异常。
+     * 1.Exception：接受所有异常。
+     * 2.NullPointerException：只有接受到NullPointerException才会执行。当不是NullPointerException时不执行。
      *
      * @param joinPoint 切面点
      * @param e         异常
