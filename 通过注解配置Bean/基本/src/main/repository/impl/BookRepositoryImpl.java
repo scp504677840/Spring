@@ -1,6 +1,6 @@
-package main.dao.impl;
+package main.repository.impl;
 
-import main.dao.BookRepository;
+import main.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("bookRepository")

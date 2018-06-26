@@ -1,4 +1,4 @@
-package main.dao;
+package main.repository;
 
 public interface BookRepository {
 

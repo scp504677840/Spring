@@ -1,7 +1,7 @@
 package main;
 
 import main.controller.BookController;
-import main.dao.BookRepository;
+import main.repository.BookRepository;
 import main.service.BookService;
 import main.entities.Book;
 import org.springframework.context.ApplicationContext;
