@@ -9,13 +9,13 @@
     factory-method：工厂产生Bean的方法
     constructor-arg：如果factory-method方法需要传参，则通过constructor-arg传入。
     -->
-    <bean id="java" class="main.BookBeanFactory" factory-method="getBook">
+    <bean id="java" class="main.StaticBookBeanFactory" factory-method="getBook">
         <constructor-arg name="name" value="java"/>
     </bean>
-    <bean id="go" class="main.BookBeanFactory" factory-method="getBook">
+    <bean id="go" class="main.StaticBookBeanFactory" factory-method="getBook">
         <constructor-arg name="name" value="go"/>
     </bean>
-    <bean id="python" class="main.BookBeanFactory" factory-method="getBook">
+    <bean id="python" class="main.StaticBookBeanFactory" factory-method="getBook">
         <constructor-arg name="name" value="python"/>
     </bean>
 

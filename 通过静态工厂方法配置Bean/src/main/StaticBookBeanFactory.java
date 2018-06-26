@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 静态工厂方法
  */
-public class BookBeanFactory {
+public class StaticBookBeanFactory {
 
     private static Map<String, Book> books = new HashMap<>();
 
