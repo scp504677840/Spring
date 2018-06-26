@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    通过静态工厂方法来配置Bean
+    class：配置工厂全类名
+    factory-method：工厂产生Bean的方法
+    constructor-arg：如果factory-method方法需要传参，则通过constructor-arg传入。
+    -->
+    <bean id="java" class="main.BookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="java"/>
+    </bean>
+    <bean id="go" class="main.BookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="go"/>
+    </bean>
+    <bean id="python" class="main.BookBeanFactory" factory-method="getBook">
+        <constructor-arg name="name" value="python"/>
+    </bean>
+
+</beans>
