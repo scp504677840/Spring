@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bean的生命周期 init-method & destroy-method -->
+    <bean id="book" class="main.Book" p:name="Java" p:price="22.55" init-method="init" destroy-method="destroy"/>
+
+    <bean id="address" class="main.Address" p:city="Shanghai" p:street="NanJingDongLu" init-method="init"
+          destroy-method="destroy"/>
+
+    <!--
+    Bean的后置处理器
+    1.从配置的位置和配置的信息来看，这个配置是作用于全局的Bean。
+    2.配置了Bean的后置处理器以后，Bean的生命周期也将多出两个生命周期方法。
+    postProcessBeforeInitialization：调用时机在init-method之前。
+    postProcessAfterInitialization：调用时机在init-method之后。
+    -->
+    <bean class="main.MyPostProcessor"/>
+
+    <!--
+    配置两个Bean后置处理器会发生什么情况呢？
+    SpringIOC会按照配置前后顺序依次调用这些Bean后置处理器。
+    -->
+    <bean class="main.BookPostProcessor"/>
+
+</beans>
