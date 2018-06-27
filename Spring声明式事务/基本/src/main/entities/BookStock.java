@@ -3,20 +3,38 @@ package main.entities;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-public class ShopBook {
+/**
+ * -- auto-generated definition
+ * create table book_stock
+ * (
+ *   id           bigint unsigned auto_increment,
+ *   gmt_create   datetime        not null,
+ *   gmt_modified datetime        not null,
+ *   stock        int unsigned    not null,
+ *   book_id      bigint unsigned not null,
+ *   constraint book_stock_book_id_uindex
+ *   unique (book_id),
+ *   constraint book_stock_id_uindex
+ *   unique (id)
+ * );
+ *
+ * alter table book_stock
+ *   add primary key (id);
+ */
+public class BookStock {
     private BigInteger id;
     private Timestamp gmtCreate;
     private Timestamp gmtModified;
-    private BigInteger shopId;
+    private Integer stock;
     private BigInteger bookId;
 
-    public ShopBook() {
+    public BookStock() {
     }
 
-    public ShopBook(Timestamp gmtCreate, Timestamp gmtModified, BigInteger shopId, BigInteger bookId) {
+    public BookStock(Timestamp gmtCreate, Timestamp gmtModified, Integer stock, BigInteger bookId) {
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
-        this.shopId = shopId;
+        this.stock = stock;
         this.bookId = bookId;
     }
 
@@ -44,12 +62,12 @@ public class ShopBook {
         this.gmtModified = gmtModified;
     }
 
-    public BigInteger getShopId() {
-        return shopId;
+    public Integer getStock() {
+        return stock;
     }
 
-    public void setShopId(BigInteger shopId) {
-        this.shopId = shopId;
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public BigInteger getBookId() {
@@ -62,11 +80,11 @@ public class ShopBook {
 
     @Override
     public String toString() {
-        return "ShopBook{" +
+        return "BookStock{" +
                 "id=" + id +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
-                ", shopId=" + shopId +
+                ", stock=" + stock +
                 ", bookId=" + bookId +
                 '}';
     }

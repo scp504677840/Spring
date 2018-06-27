@@ -3,6 +3,21 @@ package main.entities;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
+/**
+ * -- auto-generated definition
+ * create table shop_info
+ * (
+ *   id           bigint unsigned auto_increment,
+ *   gmt_create   datetime    not null,
+ *   gmt_modified datetime    not null,
+ *   name         varchar(30) not null,
+ *   constraint shop_info_id_uindex
+ *   unique (id)
+ * );
+ *
+ * alter table shop_info
+ *   add primary key (id);
+ */
 public class ShopInfo {
     private BigInteger id;
     private Timestamp gmtCreate;

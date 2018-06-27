@@ -4,21 +4,37 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-public class BookInfo {
+/**
+ * -- auto-generated definition
+ * create table account_info
+ * (
+ *   id           bigint unsigned auto_increment,
+ *   gmt_create   datetime                not null,
+ *   gmt_modified datetime                not null,
+ *   name         varchar(30)             not null,
+ *   balance      decimal(10, 2) unsigned not null,
+ *   constraint account_info_id_uindex
+ *   unique (id)
+ * );
+ *
+ * alter table account_info
+ *   add primary key (id);
+ */
+public class AccountInfo {
     private BigInteger id;
     private Timestamp gmtCreate;
     private Timestamp gmtModified;
     private String name;
-    private BigDecimal price;
+    private BigDecimal balance;
 
-    public BookInfo() {
+    public AccountInfo() {
     }
 
-    public BookInfo(Timestamp gmtCreate, Timestamp gmtModified, String name, BigDecimal price) {
+    public AccountInfo(Timestamp gmtCreate, Timestamp gmtModified, String name, BigDecimal balance) {
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.name = name;
-        this.price = price;
+        this.balance = balance;
     }
 
     public BigInteger getId() {
@@ -53,23 +69,22 @@ public class BookInfo {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     @Override
     public String toString() {
-        return "BookInfo{" +
+        return "AccountInfo{" +
                 "id=" + id +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
                 ", name='" + name + '\'' +
-                ", price=" + price +
+                ", balance=" + balance +
                 '}';
     }
-
 }

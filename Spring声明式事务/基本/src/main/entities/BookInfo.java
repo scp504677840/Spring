@@ -4,21 +4,37 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-public class AccountInfo {
+/**
+ * -- auto-generated definition
+ * create table book_info
+ * (
+ *   id           bigint unsigned auto_increment,
+ *   gmt_create   datetime       not null,
+ *   gmt_modified datetime       not null,
+ *   name         varchar(30)    not null,
+ *   price        decimal(10, 2) not null,
+ *   constraint book_id_uindex
+ *   unique (id)
+ * );
+ *
+ * alter table book_info
+ *   add primary key (id);
+ */
+public class BookInfo {
     private BigInteger id;
     private Timestamp gmtCreate;
     private Timestamp gmtModified;
     private String name;
-    private BigDecimal balance;
+    private BigDecimal price;
 
-    public AccountInfo() {
+    public BookInfo() {
     }
 
-    public AccountInfo(Timestamp gmtCreate, Timestamp gmtModified, String name, BigDecimal balance) {
+    public BookInfo(Timestamp gmtCreate, Timestamp gmtModified, String name, BigDecimal price) {
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.name = name;
-        this.balance = balance;
+        this.price = price;
     }
 
     public BigInteger getId() {
@@ -53,22 +69,23 @@ public class AccountInfo {
         this.name = name;
     }
 
-    public BigDecimal getBalance() {
-        return balance;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        return "AccountInfo{" +
+        return "BookInfo{" +
                 "id=" + id +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
                 ", name='" + name + '\'' +
-                ", balance=" + balance +
+                ", price=" + price +
                 '}';
     }
+
 }
