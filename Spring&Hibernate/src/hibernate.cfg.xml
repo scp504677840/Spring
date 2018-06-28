@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--
+        Spring & Hibernate 整合时，Hibernate配置需要注意事项
+        1.数据源不需要在此配置文件中进行配置，直接到Spring配置文件中配置。使用到Spring IOC。
+        2.关联的 .hbm.xml 也在IOC容器配置 SessionFactory 实例时进行配置。
+        3.此配置文件中主要配置一些Hibernate常用的一些属性。如：show_sql、format_sql、dialect、hbm2ddl.auto；
+        虽然说此配置文件中的配置完全可以移到Spring配置文件中，但是不建议这样做。请保持各自清晰的配置文件信息。
+        -->
+
+        <!-- 是否在控制台打印SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 是否格式化SQL -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 数据库方言 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+        <!-- 自动生成数据表的更新策略 -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- 还可以配置Hibernate的二级缓冲策略等等。。。 -->
+    </session-factory>
+</hibernate-configuration>

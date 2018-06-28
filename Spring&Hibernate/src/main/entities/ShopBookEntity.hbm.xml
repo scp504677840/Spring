@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="main.entities.ShopBookEntity" table="shop_book" schema="lab">
+        <id name="id">
+            <column name="id" sql-type="bigint(20) unsigned"/>
+            <generator class="native"/>
+        </id>
+        <property name="gmtCreate">
+            <column name="gmt_create" sql-type="datetime"/>
+        </property>
+        <property name="gmtModified">
+            <column name="gmt_modified" sql-type="datetime"/>
+        </property>
+        <property name="shopId">
+            <column name="shop_id" sql-type="bigint(20) unsigned"/>
+        </property>
+        <property name="bookId">
+            <column name="book_id" sql-type="bigint(20) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

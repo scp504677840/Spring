@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 配置自动扫描的包 -->
+    <context:component-scan base-package="main"/>
+
+    <!-- 导入配置资源 -->
+    <context:property-placeholder location="db.properties"/>
+
+    <!-- 配置c3p0数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"/>
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="initialPoolSize" value="${initPoolSize}"/>
+        <property name="maxPoolSize" value="${maxPoolSize}"/>
+    </bean>
+
+    <!-- 配置Hibernate的SessionFactory，注意这里使用的Bean是Spring中提供给Hibernate的。 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!-- 配置数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置Hibernate方式一：配置文件【推荐】 -->
+        <property name="configLocation" value="hibernate.cfg.xml"/>
+        <!-- 配置Hibernate方式一：代替配置文件，直接使用内部Properties代替；这两种方式推荐第一种！！！ -->
+        <!--<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>-->
+
+        <!-- 配置hbm.xml，可以使用通配符。 -->
+        <property name="mappingLocations" value="main/entities/*.hbm.xml"/>
+    </bean>
+
+    <!-- 配置Spring事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置启用事务注解；当transaction-manager对应配置DataSourceTransactionManager的名称为transactionManager时，该属性可省略。 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>
