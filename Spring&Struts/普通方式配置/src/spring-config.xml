@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    如何创建IOC容器？
+    1.非Web应用在main方法中直接创建。
+    2.如果在Web应用中则可以在Web应用被服务器加载时创建IOC容器。
+    在ServletContextListener#contextInitialized(ServletContextEvent sce)中创建IOC容器。
+    如何在Web应用的其他组件中如何来访问IOC容器呢？
+    在ServletContextListener#contextInitialized(ServletContextEvent sce)方法中创建IOC容器后，
+    可以把其放在ServletContext(即application域)的一个属性中。
+    -->
+
+    <bean id="shopInfo" class="main.entities.ShopInfo">
+        <property name="name" value="cher"/>
+    </bean>
+
+</beans>
